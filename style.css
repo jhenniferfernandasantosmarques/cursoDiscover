@@ -1,0 +1,178 @@
+* {
+  /*   reset dos padroes do navegador
+ */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --text-color: white; /* --> criando uma variavel, ou seja, toda vez que eu usar var(--text-color) é a mesma coisa de eu estar colocando white */
+  --bg-url: url(assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.1);
+  --surface-color-hover: rgba(255, 255, 255, 0.1);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(assets/moon-stars.svg);
+}
+
+.light {
+  --text-color: black;
+  --bg-url: url(assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(255, 255, 255, 0.05);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(assets/sun.svg);
+}
+
+body {
+  /*
+  background-image: url(assets/bg-mobile.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  */
+  /* background: color image repeat position/size; */
+  background: var(--bg-url) no-repeat top center/cover;
+}
+
+body * {
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+}
+#container {
+  width: 360px;
+  margin: 56px auto 0px;
+  padding: 0 24px;
+}
+
+/* #profile {
+  text-align: center;
+}
+  isso também funciona pra alinhar no centro elementos inline, como as imagens. Ao invés de transformarmos eles para o tipo block e usar margin: auto;
+ */
+/* profile */
+#profile {
+  padding: 24px;
+  text-align: center;
+}
+
+#profile img {
+  /*  display: block; */
+  width: 112px;
+  /*  margin: auto; */
+}
+
+#profile p {
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: 8px;
+}
+
+/* switch */
+
+#switch {
+  position: relative; /* tudo que for absoluto dentro dele vai poder ser organizado tendo ele como referencia */
+  width: 64px;
+
+  margin: 4px auto;
+}
+
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+
+  position: absolute; /* para fazer sobreposição de camadas*/
+  top: 50%;
+  left: 0;
+  z-index: 1; /* para definir em que camda o elemento vai ficar */
+  transform: translateY(-50%);
+}
+
+.light #switch button {
+  right: 0;
+  left: initial;
+}
+
+#switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+
+/* display é uma forma de organizar os itens, tipo: display: block --> o elemento ocupa uma linha toda, display: inline --> o elemento pemite que outros fiquem na mesma linha...
+*/
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 0;
+}
+
+ul li a {
+  display: flex;
+  align-items: center; /* alinha itens no centro vertical, tipo:   
+              1  |
+              2  - <--- item estaria aqui, pois é o meio.
+              3  |
+  */
+  justify-content: center; /* alinha itens no centro horizontal, tipo:   
+              |
+              |
+              v --> item estaria ai (2), pois é o meio.
+            - - -
+            1 2 3
+  */
+  padding: 16px 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  text-decoration: none; /* para tirar a linha abaixo do texto do link */
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+ul li a:hover {
+  /* hover é para mudar algo em um elemento quando o mouse passar por cima dele */
+  background-color: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+/* social links */
+#social-links {
+  display: flex;
+  justify-content: center;
+  padding: 24px 0;
+  font-size: 24px;
+}
+
+#social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+#social-links a:hover {
+  background: var(--highlight-color);
+}
+
+footer {
+  padding: 16px;
+  text-align: center;
+  font-size: 14px;
+}
